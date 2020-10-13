@@ -1,0 +1,226 @@
+.right {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  list-style-type: none;
+  position: relative;
+  margin-right: 2vw;
+  width: 60vw;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+
+.nav-links .nav-link-selected {
+  background-color: #eeecec;
+  color: #13c6ff;
+}
+
+.nav-links .left-link {
+  justify-self: flex-start;
+  margin-left: 4vw;
+  position: relative;
+}
+
+.nav-links .left-link .tooltip-text {
+  visibility: hidden;
+  width: auto;
+  padding: 3px 0;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  top: 13vh;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.nav-links .left-link:hover .tooltip-text {
+  visibility: visible;
+}
+
+.nav-links .right-link {
+  justify-self: flex-end;
+}
+
+.nav-links li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 12vh;
+  width: auto;
+  cursor: pointer;
+}
+
+.nav-links li i {
+  font-size: 3rem;
+}
+
+.nav-links li a:hover {
+  background-color: #eeecec;
+  color: #13c6ff;
+}
+
+.nav-links li a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.375rem;
+  margin-right: 0;
+  height: 80%;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 8vw;
+}
+
+.nav-links .avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 90px;
+  background-image: url("https://d3d71ba2asa5oz.cloudfront.net/62001271/images/arsenal%20fc.jpg");
+  background-size: cover;
+}
+
+.user-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 8vw;
+  justify-self: flex-end;
+}
+
+.user-menu a {
+  margin-left: 1vw;
+}
+
+.user-dropdown {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+  position: absolute;
+  top: 10vh;
+  width: 18vw;
+  padding: 0;
+  margin: 0;
+  -webkit-box-shadow: 5px 6px 5px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 6px 5px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  z-index: 1;
+  padding-bottom: 20px;
+  font-size: 1.375rem;
+}
+
+.user-dropdown .username {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.user-dropdown ul {
+  padding: 0;
+  margin: 0;
+  width: 16vw;
+  border-radius: 20px;
+}
+
+.user-dropdown li {
+  width: 16vw;
+  margin: 0;
+  border-radius: 20px;
+  margin-top: 1vh;
+}
+
+.user-dropdown li a {
+  color: black;
+  margin: 0;
+  width: 16vw;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 20px;
+  font-size: 22px;
+}
+
+.user-dropdown li a:hover {
+  background-color: #eeecec;
+  color: #13c6ff;
+}
+
+.user-dropdown li:last-of-type:hover {
+  background-color: white;
+}
+
+.user-dropdown:hover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.user-menu-list {
+  padding: 0;
+  width: 10vw;
+}
+
+.user-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 15vh;
+}
+
+.user-menu:hover .user-dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=NavLinks.css.map */
