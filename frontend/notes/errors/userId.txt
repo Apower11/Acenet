@@ -1,0 +1,4 @@
+Error: Could not save id of user.
+Reason: Accessed auth.user.id instead of auth.user._id
+
+Solution: Change auth.user.id to auth.user._id.

@@ -1,0 +1,3 @@
+Do not set a string as an inline style. It will break the app. Set it like this.
+
+let profilePic = {backgroundImage: `url(${auth.user.profilePic})`}; 

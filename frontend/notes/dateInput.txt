@@ -1,0 +1,1 @@
+You cannot add styles to the interface for the date picker, it just varies across browsers and that's it.

@@ -1,0 +1,3 @@
+For making components click outable, it's best to use
+React Portals to create a backdrop for that item, and
+give it a higher z index.
