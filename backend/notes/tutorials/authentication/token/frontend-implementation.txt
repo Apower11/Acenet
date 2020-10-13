@@ -1,0 +1,96 @@
+1. Pass the responseData.token into the auth.login function.
+This is what gets the token on the front end. Example Code:
+
+auth.login(responseData.user, responseData.token);
+
+2. In the main App.js file, with the login function use it to set the token
+constant and when logging in, set it to token, but when logging out set token to null. Example Code:
+
+const [token, setToken] = useState(false);
+  const [user, setUser] = useState(false);
+
+  const login = useCallback((user, token) => {
+    setToken(token);
+    setUser(user);
+  }, []);
+
+  const logout = useCallback(() => {
+    setToken(null);
+    setUser(null);
+  }, []);
+
+3. Allow certain routes if a token is defined, so users can only
+access certain routes with that token. Example code:
+
+routes =
+  (!token)
+  ? (
+    <Switch>
+      <Route path="/auth" exact>
+        <Auth />
+      </Route>
+      <Redirect to="/auth" />
+    </Switch>
+  )
+  : (
+    <Switch>
+    <Route path="/" exact>
+      <Feed />
+    </Route>
+    <Route path="/add-post" exact>
+      <AddPost />
+    </Route>
+    <Route path="/posts/:userId" exact>
+      <Dashboard />
+    </Route>
+    <Redirect to="/" />
+  </Switch>
+  );
+
+
+4. Pass the token into the auth context, and set an isLoggedIn
+property to !!token, so if a token is set it will have a truthy value
+and be set to true. Example Code:
+
+<AuthContext.Provider 
+    value={{
+      isLoggedIn: !!token,
+      token: token,
+      user: user, 
+      login: login, 
+      logout: logout}}>
+
+5. Add token:null as a field to the auth-context file. Code:
+
+import { createContext } from 'react';
+
+export const AuthContext = createContext({
+    isLoggedIn: false,
+    user: {},
+    token: null,
+    login: () => {},
+    logout: () => {}
+})
+
+5. Add authorization header to your request, usually a post request
+and set authorization to 'Bearer ' + auth.token, getting the token
+value from the auth context. Example Code:
+
+await sendRequest(
+                'http://localhost:5000/api/posts',
+                'POST',
+                formData,
+                {
+                    Authorization: 'Bearer ' + auth.token
+                });
+
+6. An options request will be sent by the browser at first. Make this adjustment
+to the check auth middleware to stop the request being blocked:
+
+module.exports = (req, res, next) => {
+    if (req.method === 'OPTIONS') {
+        return next();
+    }
+
+7. Add the authorization header to other authentication
+protected requests, such as updating or deleting.

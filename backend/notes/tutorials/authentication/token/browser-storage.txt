@@ -1,0 +1,11 @@
+1. Local storage best storage system to use for storing tokens.
+
+IndexedDB: Too complex for simple token.
+
+Session Storage: Doesn't survive reloads or browser
+restarts.
+
+Cookies: Harder to use inside Javascript.
+
+2. Here's the code for storing the token in local storage:
+

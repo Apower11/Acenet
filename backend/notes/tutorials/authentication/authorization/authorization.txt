@@ -1,0 +1,35 @@
+1. Add this code to your controller to make sure
+the ID of the author of the post is the same as the ID
+of the author who made the request:
+
+if(post.author.toString() !== req.userData.userId) {
+        const error = new HttpError(
+            'You are not allowed to edit this post',
+            401
+        );
+        return next(error);
+    }
+
+    Make sure you convert post author to string as it's mongoose object ID
+    type by default, so this will cause the comparison to not be equal even if the IDs
+    are equal.
+
+2. It's the same code but only slightly different for deleting a post:
+
+if(post.author.id !== req.userData.userId) {
+        const error = new HttpError(
+            'You are not allowed to delete this post',
+            401
+        );
+        return next(error);
+    }
+
+
+Bonus Note:
+
+Error 401: Unauthorised
+
+Error 403: Forbidden in general
+
+Error 403 more suitable for invalid tokens or not
+invalid credentials for signing up or logging in.

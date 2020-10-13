@@ -1,0 +1,25 @@
+1. Use the useEffect hook in the main App.js file to activate the auto
+login function as soon as the page loads.
+
+2. Here's the auto login function code:
+
+useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('userData'));
+    if (storedData && storedData.token) {
+      login(storedData.userId, storedData.user, storedData.token);
+    }
+  }, [login]);
+
+3. This is the code needed for the login and logout callback functions:
+
+const login = useCallback((userId, user, token) => {
+    setToken(token);
+    setUser(user);
+    localStorage.setItem('userData', JSON.stringify({ userId: userId, token: token, user: user }));
+  }, []);
+
+  const logout = useCallback(() => {
+    setToken(null);
+    setUser(null);
+    localStorage.removeItem('userData');
+  }, []);

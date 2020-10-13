@@ -1,0 +1,12 @@
+1. filename wouldn't work because I used a capital N, and it should be all lower case.
+2. Couldn't use uuid, as subpath of v4 or v5 not defined.
+
+Solution:
+Install specific version in terminal, input this:
+npm i --s uuid/v5
+
+3. req.file.path giving backslashes.
+
+Solution:
+Use this regular expression to replace the backslashes with forward slashes:
+req.file.path.replace(/\\/g, "/")

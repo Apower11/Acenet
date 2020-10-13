@@ -1,0 +1,58 @@
+1. You protect backend routes by using a check auth
+middleware in your routes. Make sure you
+router.use() it before the routes you want
+to protect. For example:
+
+const checkAuth = require("../middleware/check-auth");
+
+
+// Get all posts
+router.get('/', postsController.getPosts);
+
+// Get posts by user id
+router.get('/user/:uid', postsController.getPostsByUserId);
+
+// Use authentication middleware. Don't execute as it's already a function anyway.
+router.use(checkAuth);
+
+// Add post
+router.post('/',
+    fileUpload.single('picture'),
+    [
+        check('caption')
+            .trim()
+            .not()
+            .isEmpty()
+    ],
+    postsController.createPost);
+
+// Edit Post
+router.patch('/:pid',
+fileUpload.single('picture'),
+postsController.updatePost);
+
+// Delete Post
+router.delete('/:pid', postsController.deletePost);
+
+2. This is the code for creating the check auth middleware:
+
+const jwt = require("jsonwebtoken");
+
+const HttpError = require("../models/http-error");
+
+module.exports = (req, res, next) => {
+    try {
+        // Get token
+        const token = req.headers.authorization.split(' ')[1]; // Authorization: 'Bearer TOKEN'
+        if(!token) {
+            throw new Error('Authentication failed!');
+        }
+        // Verify token
+        const decodedToken = jwt.verify(token, 'supersecret_dont_share');
+        req.userData = {userId: decodedToken.userId};
+        next();
+    } catch(err) {
+        const error = new HttpError('Authentication failed!', 401);
+        return next(error);
+    }
+};
